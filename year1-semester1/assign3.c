@@ -173,11 +173,12 @@ int countExact(int secret[], int guess[], int size)
 //checks to see which integers are misplaced
 int countMisplaced(int secret[], int guess[], int size)
 {
-    bool usedSecret[size];
+    bool usedSecret[size], usedGuess[size];
 
     for (int i = 0; i < size; i++)
     {
         usedSecret[i] = (secret[i] == guess[i]);
+        usedGuess[i] = (secret[i] == guess[i]);
     }
 
 
@@ -185,17 +186,18 @@ int countMisplaced(int secret[], int guess[], int size)
 
     for (int i = 0; i < size; i++)
     {
-        if (secret[i] == guess[i])
+        if (usedSecret[i])
             {
                 continue;
             }
         for (int j = 0; j < size; j++)
         {
 
-            if (!usedSecret[i] && secret[i] == guess[j])
+            if (!usedGuess[j] && secret[i] == guess[j])
             {
                 count ++;
                 usedSecret[i] = true;
+                usedGuess[j] = true;
                 break;
             }
         }
