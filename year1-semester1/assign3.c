@@ -25,6 +25,8 @@ int main (void)
     int secret[CODE_LENGTH], guess[CODE_LENGTH];
     bool leave = false;
 
+    generateSecret(secret, CODE_LENGTH);
+
     printf("Welcome to code breaker!\n");
     printf("Guess the %d digit code. Each digit is between %d and %d.\n", CODE_LENGTH, MIN_DIGIT, MAX_DIGIT);
     printf("Enter -1 for any digit to quit.\n");
